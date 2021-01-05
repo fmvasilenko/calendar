@@ -6,6 +6,11 @@ const Cell = styled.td`
   height: 30px;
 `;
 
+const CellMiddle = styled(Cell)`
+  background: blue;
+`;
+
 export {
-  Cell
+  Cell,
+  CellMiddle
 }
