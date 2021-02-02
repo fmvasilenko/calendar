@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReduxStore } from '../../core/rootReducer';
+import { setTable } from '../../core/table/actions';
 import MomentStatus from '../../types/MomentStatus.types';
 import TableCell from '../TableCell/TableCell';
 import { Hour, Day } from './Table.style';
@@ -8,17 +9,22 @@ import { Props } from './Table.types';
 
 const Table = (props: Props): JSX.Element => {
   const { days, hours } = props;
-  const matrix: MomentStatus[][] = days.map(() => hours.map(() => 'free'));
-  const [ state, setState ] = useState(matrix);
+  const dispatch = useDispatch();
   const tool = useSelector((store: ReduxStore) => store.tool);
+  const matrix = useSelector((store: ReduxStore) => store.table);
+
+  useEffect(() => {
+    const initialState: MomentStatus[][] = days.map(() => hours.map(() => 'free'));
+    dispatch(setTable(initialState));
+  }, [dispatch, days, hours])
 
   const clickHandler = (clickedRow: number, clickedColumn: number) => {
-    setState(state.map((row, rowNumber) => {
+    dispatch(setTable(matrix.map((row, rowNumber) => {
       return row.map((column, columnNumber) => {
         if (clickedRow === rowNumber && clickedColumn === columnNumber) return tool;
-        return state[rowNumber][columnNumber];
+        return matrix[rowNumber][columnNumber];
       });
-    }))
+    })));
   }
 
   return (
@@ -31,12 +37,12 @@ const Table = (props: Props): JSX.Element => {
       </thead>
       <tbody>
         {
-          state.map((row, rowNumber) => (
+          matrix.map((row, rowNumber) => (
             <tr>
               <Day>{ days[rowNumber] }</Day>
               { row.map((column, columnNumber) => <TableCell
                   key={`${rowNumber}${columnNumber}`}
-                  status={ state[rowNumber][columnNumber] }
+                  status={ matrix[rowNumber][columnNumber] }
                   row={ rowNumber }
                   column={ columnNumber }
                   callBack={ clickHandler } 
