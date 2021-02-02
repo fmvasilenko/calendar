@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import getMomentColorStatus from '../../../helpers/getMomentStatusColor';
+import getMomentStatusColor from '../../../helpers/getMomentStatusColor';
 import { StyleProps } from './Tool.types';
 
 const Label = styled.label`
@@ -12,7 +12,7 @@ const ColorBox = styled.span`
   display: block;
   min-width: 50px;
   height: 50px;
-  background: ${(props: StyleProps) => getMomentColorStatus(props.toolType)};
+  background: ${(props: StyleProps) => getMomentStatusColor(props.toolType)};
   border-radius: 5px 0 0 5px;
   z-index: 1;
   transition-property: min-width;
@@ -42,7 +42,7 @@ const Input = styled.input<StyleProps>`
     border-top: 1px solid;
     border-right: 1px solid;
     border-bottom: 1px solid;
-    border-color: ${(props: StyleProps) => getMomentColorStatus(props.toolType)};
+    border-color: ${(props: StyleProps) => getMomentStatusColor(props.toolType)};
   }
 `;
 

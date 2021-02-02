@@ -1,6 +1,6 @@
 import MomentStatus from '../types/MomentStatus.types';
 
-const getMomentColorStatus = (moment: MomentStatus) => {
+const getMomentStatusColor = (moment: MomentStatus) => {
   switch (moment) {
     case 'busy': return '#ff5e78';
     case 'undesirable': return '#ffb4b4';
@@ -10,4 +10,4 @@ const getMomentColorStatus = (moment: MomentStatus) => {
   }
 }
 
-export default getMomentColorStatus;
+export default getMomentStatusColor;
