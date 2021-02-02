@@ -19,8 +19,18 @@ const Title = styled.h2`
   color: #333;
 `;
 
+const Sidebar = styled.div`
+  margin-left: 50px;
+`;
+
+const SubmitButton = styled.div`
+  margin-top: 10px;
+`;
+
 export {
   Page,
   Calendar,
-  Title
+  Title,
+  Sidebar,
+  SubmitButton,
 }

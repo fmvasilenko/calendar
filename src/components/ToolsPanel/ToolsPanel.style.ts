@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Panel = styled.form`
-  margin-left: 50px;
   width: 280px;
 `;
 

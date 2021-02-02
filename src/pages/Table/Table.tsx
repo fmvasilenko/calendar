@@ -1,6 +1,7 @@
+import Button from '../../components/Button/Button';
 import CalendarTable from '../../components/Table/Table';
 import ToolsPanel from '../../components/ToolsPanel/ToolsPanel';
-import { Page, Calendar, Title } from './Table.style';
+import { Page, Calendar, Title, Sidebar, SubmitButton } from './Table.style';
 
 const tableProps = {
   days: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница'],
@@ -14,7 +15,12 @@ const Table = (): JSX.Element => {
         <Title>Выберите время, когда вам удобно встретиться:</Title>
         <CalendarTable {...tableProps}/>
       </Calendar>
-      <ToolsPanel />
+      <Sidebar>
+        <ToolsPanel />
+        <SubmitButton>
+          <Button label="Отправить"/>
+        </SubmitButton>
+      </Sidebar>
     </Page>
   );
 }
