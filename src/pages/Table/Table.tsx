@@ -1,7 +1,7 @@
 import Button from '../../components/Button/Button';
 import CalendarTable from '../../components/Table/Table';
 import ToolsPanel from '../../components/ToolsPanel/ToolsPanel';
-import { Page, Calendar, Title, Sidebar, SubmitButton } from './Table.style';
+import { Page, Header, Title, Content, TableTitle, Sidebar, SubmitArea, SubmitButton, Description } from './Table.style';
 
 const tableProps = {
   days: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница'],
@@ -11,16 +11,25 @@ const tableProps = {
 const Table = (): JSX.Element => {
   return (
     <Page>
-      <Calendar>
-        <Title>Выберите время, когда вам удобно встретиться:</Title>
+      <Header>
+        <Title>Очень важное мероприятие!<br/>Все обязательно приходите!</Title>
+        <Description>
+          Но новая модель организационной деятельности требует определения и уточнения кластеризации усилий! Лишь стремящиеся вытеснить традиционное производство, нанотехнологии в равной степени предоставлены сами себе. Безусловно, убеждённость некоторых оппонентов позволяет выполнить важные задания по разработке вывода текущих активов.
+        </Description>
+      </Header>
+      <Content>
+        <TableTitle>Выберите время, когда вам удобно встретиться:</TableTitle>
         <CalendarTable {...tableProps}/>
-      </Calendar>
+      </Content>
       <Sidebar>
         <ToolsPanel />
-        <SubmitButton>
-          <Button label="Отправить"/>
-        </SubmitButton>
       </Sidebar>
+      <SubmitArea>
+        <Button color="red" label="Очистить" />
+        <SubmitButton>
+          <Button color="green" label="Отправить"/>
+        </SubmitButton>
+      </SubmitArea>
     </Page>
   );
 }

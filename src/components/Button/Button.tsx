@@ -4,9 +4,11 @@ import { Root } from './Button.style';
 const Button = (props: Props): JSX.Element => {
   const {
     label,
+    color = 'grey',
     type = 'button'
   } = props;
-  return <Root type={type}>{label}</Root>
+  console.log(color);
+  return <Root type={type} color={color}>{label}</Root>
 }
 
 export default Button;
