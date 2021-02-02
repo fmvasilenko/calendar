@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Panel = styled.form`
   margin-left: 50px;
-  max-width: 280px;
+  width: 280px;
 `;
 
 const Title = styled.p`
@@ -10,6 +10,7 @@ const Title = styled.p`
   margin: 10px 0;
   font-size: 20px;
   font-weight: bold;
+  color: #333;
 `;
 
 export {
