@@ -4,9 +4,10 @@ import { Label, Input, Text, ColorBox } from './Tool.style';
 const Tool = ({
   toolType,
   label,
+  callBack,
 }: Props): JSX.Element => {
   return (
-    <Label>
+    <Label onClick={() => callBack ? callBack(toolType) : null}>
       <Input toolType={toolType} type="radio" name="tool"/>
       <ColorBox toolType={toolType} />
       <Text>{label}</Text>

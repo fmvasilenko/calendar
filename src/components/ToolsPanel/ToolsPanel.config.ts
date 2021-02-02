@@ -1,19 +1,23 @@
 import Config from './ToolsPanel.types';
 
 const config: Config = {
-  title: 'Инструменты',
+  title: 'Выбранное время:',
   items: [
     {
-      toolType: 'active',
-      label: 'Tool 1'
+      toolType: 'busy',
+      label: 'Точно занято'
     },
     {
-      toolType: 'disabled',
-      label: 'Tool 2'
+      toolType: 'undesirable',
+      label: 'Возможно занято'
     },
     {
-      toolType: 'disabled',
-      label: 'Tool 3'
+      toolType: 'free',
+      label: 'Свободно'
+    },
+    {
+      toolType: 'preferred',
+      label: 'Предпочтительно'
     }
   ]
 }

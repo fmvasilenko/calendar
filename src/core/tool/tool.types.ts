@@ -1,14 +1,13 @@
 import { Action } from 'redux';
+import MomentStatus from '../../types/MomentStatus.types';
 
 type ActionType = 'SET_TOOL';
-type ToolType = 'active' | 'disabled';
 
 interface ToolAction extends Action {
   type: ActionType
-  payload: ToolType
+  payload: MomentStatus
 }
 
 export type {
   ToolAction,
-  ToolType,
 }
