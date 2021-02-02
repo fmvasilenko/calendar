@@ -6,6 +6,7 @@ const Label = styled.label`
   display: flex;
   width: 100%;
   margin-top: 5px;
+  cursor: pointer;
 `;
 
 const ColorBox = styled.span`
@@ -27,7 +28,6 @@ const Text = styled.span`
   height: 50px;
   padding: 0 15px;
   background: #eee;
-  cursor: pointer;
   border-radius: 0 5px 5px 0;
 `;
 
