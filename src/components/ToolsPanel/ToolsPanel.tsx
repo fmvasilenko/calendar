@@ -1,10 +1,14 @@
-import { Panel } from './ToolsPanel.style';
+import Tool from './Tool/Tool';
+import { Panel, Title } from './ToolsPanel.style';
+import config from './ToolsPanel.config';
 
 const ToolsPanel = (): JSX.Element => {
+  const { title, items } = config;
+
   return (
     <Panel>
-      <h3>Инструмент</h3>
-      <input type='radio'/>
+      <Title>{title}</Title>
+      {items.map((item) => <Tool {...item} />)}
     </Panel>
   );
 }
