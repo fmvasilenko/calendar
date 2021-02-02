@@ -1,16 +1,19 @@
 import styled from 'styled-components';
+import getMomentStatusColor from '../../helpers/getMomentStatusColor';
+import { StyleProps } from './TableCell.types';
 
-const Cell = styled.td`
-  background: green;
-  width: 30px;
-  height: 30px;
-`;
+const Cell = styled.td<StyleProps>`
+  width: 50px;
+  height: 50px;
+  background: ${(props: StyleProps) => getMomentStatusColor(props.status)};
+  cursor: pointer;
+  border: 0 solid white;
 
-const CellMiddle = styled(Cell)`
-  background: blue;
+  &:hover {
+    border: 2px solid white;
+  }
 `;
 
 export {
   Cell,
-  CellMiddle
-}
+};
