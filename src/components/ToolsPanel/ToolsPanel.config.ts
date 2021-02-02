@@ -5,11 +5,11 @@ const config: Config = {
   items: [
     {
       toolType: 'busy',
-      label: 'Точно занято'
+      label: 'Точно занято',
     },
     {
       toolType: 'undesirable',
-      label: 'Возможно занято'
+      label: 'Возможно занято',
     },
     {
       toolType: 'free',

@@ -3,6 +3,7 @@ import MomentStatus from '../../../types/MomentStatus.types';
 interface Props {
   toolType: MomentStatus,
   label: string,
+  chosen?: boolean,
   callBack?: (tool: MomentStatus) => void
 }
 
