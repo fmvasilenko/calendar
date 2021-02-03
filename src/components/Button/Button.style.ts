@@ -3,7 +3,7 @@ import getColor from '../../helpers/getColor';
 import { StyleProps } from './Button.types';
 
 const Root = styled.button`
-  width: 280px;
+  width: 100%;
   height: 50px;
   font-size: 16px;
   font-weight: bold;
