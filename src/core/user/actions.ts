@@ -16,8 +16,20 @@ const setUnauthorized = (): UserAction => ({
   payload: null
 });
 
+const signIn = (): UserAction => ({
+  type: 'SIGNIN',
+  payload: null
+});
+
+const signOut = (): UserAction => ({
+  type: 'SIGNOUT',
+  payload: null
+});
+
 export {
   checkUser,
   setAuthorized,
   setUnauthorized,
+  signIn,
+  signOut,
 };

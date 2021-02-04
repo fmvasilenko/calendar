@@ -1,35 +1,16 @@
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReduxStore } from '../../../../core/rootReducer';
-import { checkUser } from '../../../../core/user/actions';
-import { auth } from '../../../services/DB/DB';
-import User from '../../../types/User.types';
+import { signIn as signInAction, signOut as signOutAction } from '../../../../core/user/actions';
 import Button from '../Button/Button';
 import Warning from '../Warning/Warning';
 import { Root, Content, UserInfo, UserName, UserPhoto, LogOut, PopupMessage, LogIn } from './Header.style';
 
 const Header = () => {
-  const [userData, setUserData] = useState<User | null>(null);
-  const user = useSelector((state: ReduxStore) => state.user);
   const dispatch = useDispatch();
+  const userData = useSelector((store: ReduxStore) => store.user.details);
 
-  if (user.status === 'INITIAL') dispatch(checkUser());
-
-  useEffect(() => {
-    auth.getUser()
-      .then((user) => setUserData(user))
-      .catch(() => setUserData(null));
-  });
-
-  const signIn = () => {
-    auth.signIn()
-      .then((user) => setUserData(user));
-  }
-
-  const signOut = () => {
-    auth.signOut();
-    setUserData(null);
-  }
+  const signIn = () => dispatch(signInAction());
+  const signOut = () => dispatch(signOutAction());
 
   return (
     <Root>

@@ -1,13 +1,20 @@
+import { useDispatch, useSelector } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from 'react-router-dom';
+import { ReduxStore } from './core/rootReducer';
+import { checkUser } from './core/user/actions';
 import Main from './pages/Main';
 import Table from './pages/Table/Table';
 
-function App() {
+const App = (): JSX.Element => {
+  const user = useSelector((store: ReduxStore) => store.user);
+  const dispatch = useDispatch();
+  
+  if (user.status === 'INITIAL') dispatch(checkUser());
+
   return (
     <Router>
       <Switch>

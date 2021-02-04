@@ -19,6 +19,14 @@ const userReducer = (state: UserState = initialState, action: UserAction): UserS
       status: 'UNAUTHORIZED',
       details: null,
     }
+    case 'SIGNIN': return {
+      status: 'SIGNIN',
+      details: null,
+    }
+    case 'SIGNOUT': return {
+      status: 'SIGNOUT',
+      details: null,
+    }
     default: return state;
   }
 }
