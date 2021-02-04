@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ReduxStore } from '../../../../core/rootReducer';
+import { checkUser } from '../../../../core/user/actions';
 import { auth } from '../../../services/DB/DB';
 import User from '../../../types/User.types';
 import Button from '../Button/Button';
@@ -7,6 +10,10 @@ import { Root, Content, UserInfo, UserName, UserPhoto, LogOut, PopupMessage, Log
 
 const Header = () => {
   const [userData, setUserData] = useState<User | null>(null);
+  const user = useSelector((state: ReduxStore) => state.user);
+  const dispatch = useDispatch();
+
+  if (user.status === 'INITIAL') dispatch(checkUser());
 
   useEffect(() => {
     auth.getUser()
