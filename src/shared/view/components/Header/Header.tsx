@@ -1,22 +1,65 @@
+import { useEffect, useState } from 'react';
+import { auth } from '../../../services/DB/DB';
+import User from '../../../types/User.types';
 import Button from '../Button/Button';
 import Warning from '../Warning/Warning';
-import { Root, Content, UserInfo, UserName, UserPhoto, LogOut, PopupMessage } from './Header.style';
+import { Root, Content, UserInfo, UserName, UserPhoto, LogOut, PopupMessage, LogIn } from './Header.style';
 
 const Header = () => {
+  const [userData, setUserData] = useState<User | null>(null);
+
+  useEffect(() => {
+    auth.getUser()
+      .then((user) => setUserData(user))
+      .catch(() => setUserData(null));
+  });
+
+  const signIn = () => {
+    auth.signIn()
+      .then((user) => setUserData(user));
+  }
+
+  const signOut = () => {
+    auth.signOut();
+    setUserData(null);
+  }
+
   return (
     <Root>
       <Content>
-        <UserInfo>
-          <UserPhoto src="https://i.pinimg.com/736x/f8/ac/ff/f8acff9fbc09674836f8262eab2cce1b.jpg" />
-          <UserName>Федор Василенко</UserName>
-        </UserInfo>
-        <LogOut>
-          <Button color="red" label="Выйти" />
-        </LogOut>
+        {
+          userData && (
+            <UserInfo>
+              <UserPhoto src={userData.photo} />
+              <UserName>{`${userData.name} ${userData.lastName}`}</UserName>
+            </UserInfo>
+          )
+        }
+
+        {
+          userData && (
+            <LogOut>
+              <Button color="red" label="Выйти" onClick={signOut}/>
+            </LogOut>
+          )
+        }
+
+        {
+          !userData && (
+            <LogIn>
+              <Button color="green" label="Войти" onClick={signIn}/>
+            </LogIn>
+          )
+        }
+
       </Content>
-      <PopupMessage>
-        <Warning title="Внимание! Для дальнейших действий требуется авторизация!" description="Отправка данных доступна только авторизованным пользователям" />
-      </PopupMessage>
+      {
+        !userData && (
+          <PopupMessage>
+            <Warning title="Внимание! Для дальнейших действий требуется авторизация!" description="Отправка данных доступна только авторизованным пользователям" />
+          </PopupMessage>
+        )
+      }
     </Root>
   );
 };

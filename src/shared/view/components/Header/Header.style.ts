@@ -35,6 +35,10 @@ const LogOut = styled.div`
   width: 120px;
 `;
 
+const LogIn = styled.div`
+  width: 120px;
+`;
+
 const PopupMessage = styled.div`
   width: 100%;
   margin-top: 10px;
@@ -47,5 +51,6 @@ export {
   UserPhoto,
   UserName,
   LogOut,
+  LogIn,
   PopupMessage,
 };
