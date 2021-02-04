@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import MomentStatus from '../../types/MomentStatus.types';
+import MomentStatus from '../../shared/types/MomentStatus.types';
 
 type ActionType = 'SET_TABLE';
 

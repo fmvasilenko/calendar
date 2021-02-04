@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
-import Button from '../../components/Button/Button';
-import CalendarTable from '../../components/Table/Table';
-import ToolsPanel from '../../components/ToolsPanel/ToolsPanel';
-import PageHeader from '../../components/Header/Header';
+import Button from '../../shared/view/components/Button/Button';
+import CalendarTable from '../../shared/view/components/Table/Table';
+import ToolsPanel from '../../shared/view/components/ToolsPanel/ToolsPanel';
+import PageHeader from '../../shared/view/components/Header/Header';
 import { setTable } from '../../core/table/actions';
 import { Page, Header, Description, Title, Content, TableTitle, Sidebar, SubmitArea, SubmitButton, Text } from './Table.style';
 

@@ -1,4 +1,4 @@
-import MomentStatus from '../../types/MomentStatus.types';
+import MomentStatus from '../../shared/types/MomentStatus.types';
 import Action from './table.types';
 
 const setTable = (table: MomentStatus[][]): Action => ({

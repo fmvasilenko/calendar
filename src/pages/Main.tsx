@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import ToolsPanel from '../components/ToolsPanel/ToolsPanel';
+import ToolsPanel from '../shared/view/components/ToolsPanel/ToolsPanel';
 
 const Main = (): JSX.Element => {
   return (

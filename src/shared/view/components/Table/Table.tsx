@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ReduxStore } from '../../core/rootReducer';
-import { setTable } from '../../core/table/actions';
-import MomentStatus from '../../types/MomentStatus.types';
+import { ReduxStore } from '../../../../core/rootReducer';
+import { setTable } from '../../../../core/table/actions';
+import MomentStatus from '../../../types/MomentStatus.types';
 import TableCell from '../TableCell/TableCell';
 import { Hour, Day } from './Table.style';
 import { Props } from './Table.types';

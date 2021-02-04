@@ -1,4 +1,4 @@
-import { Color } from '../../types/Color.types';
+import { Color } from '../../../types/Color.types';
 
 interface Props {
   label: string

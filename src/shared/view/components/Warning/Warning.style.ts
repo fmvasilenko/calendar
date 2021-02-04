@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import getColor from '../../helpers/getColor';
+import getColor from '../../../helpers/getColor';
 
 const Root = styled.div`
   position: relative;

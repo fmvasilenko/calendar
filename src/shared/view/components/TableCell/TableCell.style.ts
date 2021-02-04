@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import getMomentStatusColor from '../../helpers/getMomentStatusColor';
+import getMomentStatusColor from '../../../helpers/getMomentStatusColor';
 import { StyleProps } from './TableCell.types';
 
 const Cell = styled.td<StyleProps>`

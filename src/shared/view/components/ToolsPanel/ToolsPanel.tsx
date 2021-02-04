@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import MomentStatus from '../../types/MomentStatus.types';
-import { setTool } from '../../core/tool/actions';
-import { ReduxStore } from '../../core/rootReducer';
+import MomentStatus from '../../../types/MomentStatus.types';
+import { setTool } from '../../../../core/tool/actions';
+import { ReduxStore } from '../../../../core/rootReducer';
 
 import Tool from './Tool/Tool';
 import { Panel, Title } from './ToolsPanel.style';

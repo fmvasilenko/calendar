@@ -1,4 +1,4 @@
-import MomentStatus from '../../types/MomentStatus.types';
+import MomentStatus from '../../../types/MomentStatus.types';
 
 interface Props {
   status: MomentStatus
