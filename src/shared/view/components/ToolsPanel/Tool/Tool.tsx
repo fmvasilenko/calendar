@@ -9,7 +9,7 @@ const Tool = ({
 }: Props): JSX.Element => {
   return (
     <Label onClick={() => callBack ? callBack(toolType) : null}>
-      <Input toolType={toolType} type="radio" name="tool" checked={chosen}/>
+      <Input toolType={toolType} type="radio" name="tool" defaultChecked={chosen}/>
       <ColorBox toolType={toolType} />
       <Text>{label}</Text>
     </Label>

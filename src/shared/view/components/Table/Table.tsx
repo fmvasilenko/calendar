@@ -32,13 +32,13 @@ const Table = (props: Props): JSX.Element => {
       <thead>
         <tr>
           <th></th>
-          { hours.map((hour) => <Hour>{ hour }</Hour>) }
+          { hours.map((hour, index) => <Hour key={`${index}`}>{ hour }</Hour>) }
         </tr>
       </thead>
       <tbody>
         {
           matrix.map((row, rowNumber) => (
-            <tr>
+            <tr key={`${rowNumber}`}>
               <Day>{ days[rowNumber] }</Day>
               { row.map((column, columnNumber) => <TableCell
                   key={`${rowNumber}${columnNumber}`}

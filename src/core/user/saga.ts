@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import { auth } from '../../shared/services/DB/DB';
 import User from '../../shared/types/User.types';
 import { setAuthorized, setUnauthorized } from './actions';

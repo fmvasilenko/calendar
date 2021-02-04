@@ -14,14 +14,13 @@ const ToolsPanel = (): JSX.Element => {
   const { title, items } = config;
 
   const changeTool = (tool: MomentStatus) => {
-    console.log('dispatch');
     dispatch(setTool(tool));
   }
 
   return (
     <Panel>
       <Title>{title}</Title>
-      {items.map((item) => <Tool {...item} callBack={changeTool} chosen={chosenTool === item.toolType}/>)}
+      {items.map((item, index) => <Tool key={`${index}`} {...item} callBack={changeTool} chosen={chosenTool === item.toolType}/>)}
     </Panel>
   );
 }
