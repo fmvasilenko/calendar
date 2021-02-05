@@ -1,4 +1,4 @@
-type Color = 'red' | 'blue' | 'green' | 'pink' | 'grey';
+type Color = 'black' | 'red' | 'blue' | 'green' | 'pink' | 'grey' | 'white';
 
 export type {
   Color,

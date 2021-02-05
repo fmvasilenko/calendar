@@ -39,9 +39,9 @@ const Table = (): JSX.Element => {
         <ToolsPanel />
       </Sidebar>
       <SubmitArea>
-        <Button color="red" label="Очистить" onClick={clearTable} />
+        <Button color="red" background="white" border="red" label="Очистить" onClick={clearTable} />
         <SubmitButton>
-          <Button color="green" label="Отправить"/>
+          <Button color="white" background="green" label="Отправить"/>
         </SubmitButton>
       </SubmitArea>
     </Page>

@@ -7,11 +7,12 @@ const Root = styled.button`
   height: 50px;
   font-size: 16px;
   font-weight: bold;
-  color: ${(props: StyleProps) => (props.color === 'grey' || props.color === 'red' ? '#333' : 'white')};
-  background: ${(props: StyleProps) => props.color === 'red'? 'none' : getColor(props.color)};
-  border: ${(props: StyleProps) => props.color === 'red' ? `2px solid ${getColor('pink')}` : '0'};
+  color: ${(props: StyleProps) => getColor(props.color)};
+  background: ${(props: StyleProps) => getColor(props.background)};
   border-radius: 5px;
   cursor: pointer;
+
+  border: ${(props: StyleProps) => props.border ? `2px solid ${getColor(props.border)}` : 'none'};
 
   &:hover {
     opacity: 0.5;

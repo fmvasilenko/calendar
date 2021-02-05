@@ -14,7 +14,7 @@ const Unauthorized = () => {
     <Root>
       <Content>
         <LogIn>
-          <Button color="green" label="Войти" onClick={signIn}/>
+          <Button color="white" background="green" label="Войти" onClick={signIn}/>
         </LogIn>
       </Content>
 
