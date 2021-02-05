@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { StyleProps } from './Table.types';
 
-const Page = styled.div`
+const Page = styled.div<StyleProps>`
   display: grid;
-  grid-template-columns: auto max-content 280px auto;
+  grid-template-columns: auto ${(props: StyleProps) => `${props.tableWidth}px`} 280px auto;
   grid-template-rows: max-content max-content max-content;
   grid-template-areas:
     ". header header ."
@@ -22,7 +23,6 @@ const Header = styled.div`
 const Description = styled.div`
   grid-area: description;
   padding-left: 121px;
-  max-width: 800px;
 `;
 
 const Title = styled.h1`

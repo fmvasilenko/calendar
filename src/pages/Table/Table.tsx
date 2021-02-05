@@ -13,6 +13,7 @@ const tableProps = {
 
 const Table = (): JSX.Element => {
   const { days, hours } = tableProps;
+  const tableSize = hours.length * 50 + hours.length - 1 + 121;
   const dispatch = useDispatch();
 
   const clearTable = () => {
@@ -20,7 +21,7 @@ const Table = (): JSX.Element => {
   }
 
   return (
-    <Page>
+    <Page tableWidth={tableSize}>
       <Header>
         <PageHeader />
       </Header>
