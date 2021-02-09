@@ -3,6 +3,7 @@ import userReducer from './user/reducer';
 import toolReducer from './tool/reducer';
 import tableReducer from './table/reducer';
 import eventIdReducer from './eventId/reducer';
+import eventReducer from './event/reducer';
 import formStatusReducer from './formStatus/reducer';
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   tool: toolReducer,
   table: tableReducer,
   eventId: eventIdReducer,
+  event: eventReducer,
   formStatus: formStatusReducer,
 });
 
