@@ -15,7 +15,7 @@ const tableProps = {
 const SubmitArea = (): JSX.Element => {
   const { days, hours } = tableProps;
   const dispatch = useDispatch();
-  const formStatus = useSelector((state: ReduxStore) => state.formStatus);
+  const { formStatus } = useSelector((state: ReduxStore) => state);
 
   const clearTable = () => {
     dispatch(setTable(days.map(() => hours.map(() => 'free'))));

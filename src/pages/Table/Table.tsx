@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import queryString from 'query-string';
 
 import { setEventId } from '../../core/eventId/actions';
@@ -11,14 +11,17 @@ import ToolsPanel from '../../shared/view/components/ToolsPanel/ToolsPanel';
 import PageHeader from '../../shared/view/components/Header/Header';
 
 import { Page, Header, Description, Title, Content, TableTitle, Sidebar, Text } from './Table.style';
+import { ReduxStore } from '../../core/rootReducer';
 
 const tableProps = {
-  days: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница'],
+  days: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Суббота'],
   hours: ['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00']
 }
 
 const Table = (): JSX.Element => {
-  const { hours } = tableProps;
+  const event = useSelector((state: ReduxStore) => state.event);
+  const hours = event ? event.hours : tableProps.hours;
+
   const tableSize = hours.length * 50 + hours.length - 1 + 121;
 
   const dispatch = useDispatch();
@@ -35,14 +38,14 @@ const Table = (): JSX.Element => {
         <PageHeader />
       </Header>
       <Description>
-        <Title>Очень важное мероприятие!<br/>Все обязательно приходите!</Title>
+        <Title>{ event?.name || 'Очень важное мероприятие!<br/>Все обязательно приходите!' }</Title>
         <Text>
           Но новая модель организационной деятельности требует определения и уточнения кластеризации усилий! Лишь стремящиеся вытеснить традиционное производство, нанотехнологии в равной степени предоставлены сами себе. Безусловно, убеждённость некоторых оппонентов позволяет выполнить важные задания по разработке вывода текущих активов.
         </Text>
       </Description>
       <Content>
         <TableTitle>Выберите время, когда вам удобно встретиться:</TableTitle>
-        <CalendarTable {...tableProps}/>
+        <CalendarTable {...(event || tableProps)}/>
       </Content>
       <Sidebar>
         <ToolsPanel />
