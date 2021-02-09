@@ -53,15 +53,6 @@ const Sidebar = styled.div`
   align-self: end;
 `;
 
-const SubmitArea = styled.div`
-  grid-area: submitArea;
-  margin-top: 40px;
-`;
-
-const SubmitButton = styled.div`
-  margin-top: 5px;
-`;
-
 export {
   Page,
   Header,
@@ -71,6 +62,4 @@ export {
   Content,
   TableTitle,
   Sidebar,
-  SubmitArea,
-  SubmitButton,
 }

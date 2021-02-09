@@ -17,7 +17,7 @@ type StylePatterns = {
   [key in PatternNames]: StyleProps;
 };
 
-type PatternNames = 'resolve' | 'reject';
+type PatternNames = 'resolve' | 'reject' | 'loading';
 
 export type {
   Props,

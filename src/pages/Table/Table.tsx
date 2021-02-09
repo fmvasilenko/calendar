@@ -3,15 +3,14 @@ import { useDispatch } from 'react-redux';
 import queryString from 'query-string';
 
 import { setEventId } from '../../core/eventId/actions';
-import { loadForm, saveForm } from '../../core/formStatus/actions';
-import { setTable } from '../../core/table/actions';
+import { loadForm } from '../../core/formStatus/actions';
 
-import Button from '../../shared/view/components/Button/Button';
+import SubmitArea from './components/SubmitArea/SubmitArea';
 import CalendarTable from '../../shared/view/components/Table/Table';
 import ToolsPanel from '../../shared/view/components/ToolsPanel/ToolsPanel';
 import PageHeader from '../../shared/view/components/Header/Header';
 
-import { Page, Header, Description, Title, Content, TableTitle, Sidebar, SubmitArea, SubmitButton, Text } from './Table.style';
+import { Page, Header, Description, Title, Content, TableTitle, Sidebar, Text } from './Table.style';
 
 const tableProps = {
   days: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница'],
@@ -19,8 +18,9 @@ const tableProps = {
 }
 
 const Table = (): JSX.Element => {
-  const { days, hours } = tableProps;
+  const { hours } = tableProps;
   const tableSize = hours.length * 50 + hours.length - 1 + 121;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,14 +28,6 @@ const Table = (): JSX.Element => {
     dispatch(setEventId(eventId as string || null));
     dispatch(loadForm());
   }, [dispatch])
-
-  const clearTable = () => {
-    dispatch(setTable(days.map(() => hours.map(() => 'free'))));
-  }
-
-  const sendForm = () => {
-    dispatch(saveForm());
-  }
 
   return (
     <Page tableWidth={tableSize}>
@@ -55,12 +47,7 @@ const Table = (): JSX.Element => {
       <Sidebar>
         <ToolsPanel />
       </Sidebar>
-      <SubmitArea>
-        <Button view="reject" label="Очистить" onClick={clearTable} />
-        <SubmitButton>
-          <Button view="resolve" label="Сохранить" onClick={sendForm}/>
-        </SubmitButton>
-      </SubmitArea>
+      <SubmitArea />
     </Page>
   );
 }

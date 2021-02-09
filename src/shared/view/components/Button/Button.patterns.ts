@@ -10,6 +10,10 @@ const Patterns: StylePatterns = {
     background: 'white',
     border: 'red',
   },
+  loading: {
+    color: 'white',
+    background: 'blue',
+  }
 };
 
 export default Patterns;
