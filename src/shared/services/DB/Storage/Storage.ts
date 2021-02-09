@@ -15,6 +15,11 @@ class Storage {
     const { userId } = await this.auth.getUser();
     return this.database.saveTable(eventId, userId, table);
   }
+
+  public async getTable(eventId: string): Promise<MomentStatus[][] | null> {
+    const { userId } = await this.auth.getUser();
+    return this.database.getTable(eventId, userId);
+  }
 }
 
 export default Storage;

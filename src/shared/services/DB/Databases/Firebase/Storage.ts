@@ -20,6 +20,17 @@ class Storage implements IStorage {
       });
     });
   }
+
+  public getTable(eventId: string, userId: string): Promise<MomentStatus[][] | null> {
+    return firebase.database().ref(`tables/${eventId}/${userId}`)
+      .once('value')
+      .then(this.getDataOutOfSnapShot);
+  }
+
+  private getDataOutOfSnapShot(snapshot: firebase.database.DataSnapshot) {
+    return snapshot.val();
+  }
+
 }
 
 export default Storage;

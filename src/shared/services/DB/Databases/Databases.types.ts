@@ -9,6 +9,7 @@ interface IAuth {
 
 interface IStorage {
   saveTable(eventId: string, userId: string, table: MomentStatus[][]): Promise<void>
+  getTable(eventId: string, userId: string): Promise<MomentStatus[][] | null>
 }
 
 export type {
