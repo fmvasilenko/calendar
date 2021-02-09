@@ -6,6 +6,11 @@ interface IAuth {
   getUser(): Promise<User>
 }
 
+interface IStorage {
+
+}
+
 export type {
   IAuth,
+  IStorage,
 };
