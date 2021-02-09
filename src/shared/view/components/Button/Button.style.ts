@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import getColor from '../../../helpers/getColor';
 import { StyleProps } from './Button.types';
 
-const Root = styled.button`
+const Root = styled.button<StyleProps>`
   width: 100%;
   height: 50px;
   font-size: 16px;

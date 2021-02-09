@@ -21,7 +21,7 @@ const Authorized = (props: Props) => {
         </UserInfo>
 
         <LogOut>
-          <Button color="red" background="white" border="red" label="Выйти" onClick={signOut}/>
+          <Button view="reject" label="Выйти" onClick={signOut}/>
         </LogOut>
       </Content>
     </Root>
