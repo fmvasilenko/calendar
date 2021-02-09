@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 
 import MomentStatus from '../../../../types/MomentStatus.types';
+import Event from '../../../../types/Event.types';
 import { IStorage } from '../Databases.types';
 
 import config from './Config';
@@ -27,10 +28,15 @@ class Storage implements IStorage {
       .then(this.getDataOutOfSnapShot);
   }
 
+  public getEvent(eventId: string): Promise<Event | null> {
+    return firebase.database().ref(`events/${eventId}`)
+      .once('value')
+      .then(this.getDataOutOfSnapShot);
+  }
+
   private getDataOutOfSnapShot(snapshot: firebase.database.DataSnapshot) {
     return snapshot.val();
   }
-
 }
 
 export default Storage;
