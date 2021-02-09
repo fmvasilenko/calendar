@@ -1,9 +1,16 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import queryString from 'query-string';
+
+import { setEventId } from '../../core/eventId/actions';
+import { saveForm } from '../../core/formStatus/actions';
+import { setTable } from '../../core/table/actions';
+
 import Button from '../../shared/view/components/Button/Button';
 import CalendarTable from '../../shared/view/components/Table/Table';
 import ToolsPanel from '../../shared/view/components/ToolsPanel/ToolsPanel';
 import PageHeader from '../../shared/view/components/Header/Header';
-import { setTable } from '../../core/table/actions';
+
 import { Page, Header, Description, Title, Content, TableTitle, Sidebar, SubmitArea, SubmitButton, Text } from './Table.style';
 
 const tableProps = {
@@ -16,8 +23,17 @@ const Table = (): JSX.Element => {
   const tableSize = hours.length * 50 + hours.length - 1 + 121;
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const { eventId } = queryString.parse(window.location.search);
+    dispatch(setEventId(eventId as string || null));
+  }, [dispatch])
+
   const clearTable = () => {
     dispatch(setTable(days.map(() => hours.map(() => 'free'))));
+  }
+
+  const sendForm = () => {
+    dispatch(saveForm());
   }
 
   return (
@@ -41,7 +57,7 @@ const Table = (): JSX.Element => {
       <SubmitArea>
         <Button view="reject" label="Очистить" onClick={clearTable} />
         <SubmitButton>
-          <Button view="resolve" label="Отправить"/>
+          <Button view="resolve" label="Отправить" onClick={sendForm}/>
         </SubmitButton>
       </SubmitArea>
     </Page>
