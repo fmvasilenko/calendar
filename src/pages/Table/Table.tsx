@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import queryString from 'query-string';
 
 import { setEventId } from '../../core/eventId/actions';
-import { saveForm } from '../../core/formStatus/actions';
+import { loadForm, saveForm } from '../../core/formStatus/actions';
 import { setTable } from '../../core/table/actions';
 
 import Button from '../../shared/view/components/Button/Button';
@@ -26,6 +26,7 @@ const Table = (): JSX.Element => {
   useEffect(() => {
     const { eventId } = queryString.parse(window.location.search);
     dispatch(setEventId(eventId as string || null));
+    dispatch(loadForm());
   }, [dispatch])
 
   const clearTable = () => {
@@ -57,7 +58,7 @@ const Table = (): JSX.Element => {
       <SubmitArea>
         <Button view="reject" label="Очистить" onClick={clearTable} />
         <SubmitButton>
-          <Button view="resolve" label="Отправить" onClick={sendForm}/>
+          <Button view="resolve" label="Сохранить" onClick={sendForm}/>
         </SubmitButton>
       </SubmitArea>
     </Page>
