@@ -49,11 +49,12 @@ class Auth implements IAuth {
     });
   }
 
-  private getUserData(user: firebase.User) {
-    const { displayName, photoURL } = user;
+  private getUserData(user: firebase.User): User {
+    const { displayName, photoURL, uid } = user;
     const nameArray = displayName?.split(' ');
 
     return {
+      userId: uid,
       name: nameArray ? nameArray[0] : '',
       lastName: nameArray ? nameArray[1] : '',
       photo: photoURL || '',

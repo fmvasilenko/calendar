@@ -1,13 +1,11 @@
 import ToolsPanel from '../shared/view/components/ToolsPanel/ToolsPanel';
-// import Storage from '../shared/services/DB/Databases/Firebase/Storage';
-
-// const DB = new Storage();
+import { storage } from '../shared/services/DB/DB';
 
 /*
-DB.saveTable('event', 'user', [['free', 'busy', 'preferred'], ['undesirable', 'free', 'busy']])
+storage.saveTable('event', [['free', 'busy', 'preferred'], ['undesirable', 'free', 'busy']])
   .then(() => console.log('success'))
   .catch((error) => console.log(error));
-  */
+*/
 
 const Main = (): JSX.Element => {
   return (
