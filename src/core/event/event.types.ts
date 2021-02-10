@@ -2,7 +2,7 @@ import { Action } from 'redux';
 
 type EventStatus = 'INITIAL' | 'GETTING_EVENT' | 'READY';
 
-type EventActionType = 'EVENT/GET_EVENT' | 'EVENT/READY';
+type EventActionType = 'EVENT/GET' | 'EVENT/READY';
 
 interface EventDetails {
   name: string
@@ -39,13 +39,3 @@ export type {
   Event,
   EventAction
 }
-
-/*
-event: {
-    id: 'eventId',
-    name: 'someEvent',
-    description: 'description',
-    days: string[],
-    hours: string[],
-  },
-*/

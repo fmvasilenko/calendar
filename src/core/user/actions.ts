@@ -2,27 +2,27 @@ import User from '../../shared/types/User.types';
 import { UserAction } from './user.types';
 
 const checkUser = (): UserAction => ({
-  type: 'CHECKING',
+  type: 'USER/CHECK',
   payload: null,
 });
 
 const setAuthorized = (user: User): UserAction => ({
-  type: 'AUTHORIZED',
+  type: 'USER/AUTHORIZED',
   payload: user,
 });
 
 const setUnauthorized = (): UserAction => ({
-  type: 'UNAUTHORIZED',
+  type: 'USER/UNAUTHORIZED',
   payload: null
 });
 
 const signIn = (): UserAction => ({
-  type: 'SIGNIN',
+  type: 'USER/SIGNIN',
   payload: null
 });
 
 const signOut = (): UserAction => ({
-  type: 'SIGNOUT',
+  type: 'USER/SIGNOUT',
   payload: null
 });
 

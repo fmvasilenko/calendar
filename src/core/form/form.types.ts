@@ -24,33 +24,3 @@ export type {
   Form,
   FormAction
 }
-
-/*
-const store = {
-  user: {
-    status: 'CHECKING' | 'UNAUTHORIZED' | 'AUTHORIZED' | 'SIGNIN' | 'SIGNOUT' | 'ERROR',
-    details: {
-      userId: 'uid',
-      name: 'name',
-      lastName: 'lastName',
-      photo: 'link',
-    },
-  },
-  event: {
-    id: 'eventId',
-    name: 'someEvent',
-    description: 'description',
-    days: string[],
-    hours: string[],
-  },
-  form: {
-    status: 'INITIAL' | 'DOWNLOADING' | 'SYNCHRONIZED' | 'SAVING' | 'CHANGED',
-    fields: {
-      place: 'somePlace',
-      details: 'someDetails',
-    },
-    table: [['free']],
-  },
-  tool: 'toolName'
-}
-*/

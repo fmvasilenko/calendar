@@ -2,7 +2,7 @@ import MomentStatus from '../../shared/types/MomentStatus.types';
 import { ToolAction } from './tool.types'
 
 const setTool = (tool: MomentStatus): ToolAction => ({
-  type: 'SET_TOOL',
+  type: 'TOOL/SET',
   payload: tool,
 })
 

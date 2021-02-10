@@ -19,7 +19,7 @@ function* getEvent(): Generator {
 }
 
 const watchList = [
-  takeLatest('EVENT/GET_EVENT', getEvent),
+  takeLatest('EVENT/GET', getEvent),
 ]
 
 export default watchList;

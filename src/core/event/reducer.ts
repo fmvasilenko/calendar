@@ -13,7 +13,7 @@ const Reducer = (state: Event = initialState, action: EventAction): Event => {
   const { type, payload } = action;
 
   switch (type) {
-    case 'EVENT/GET_EVENT':
+    case 'EVENT/GET':
     case 'EVENT/READY': return {
       ...state,
       ...payload,

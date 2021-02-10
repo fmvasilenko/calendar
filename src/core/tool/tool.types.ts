@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import MomentStatus from '../../shared/types/MomentStatus.types';
 
-type ActionType = 'SET_TOOL';
+type ActionType = 'TOOL/SET';
 
 interface ToolAction extends Action {
   type: ActionType

@@ -1,7 +1,9 @@
 import { Action } from 'redux';
 import User from '../../shared/types/User.types';
 
-type Status = 'AUTHORIZED' | 'UNAUTHORIZED' | 'SIGNIN' | 'SIGNOUT' | 'CHECKING' | 'INITIAL';
+type Status = 'INITIAL' | 'CHECKING' | 'AUTHORIZED' | 'UNAUTHORIZED' | 'SIGNIN' | 'SIGNOUT';
+
+type UserActionType = 'USER/CHECK' | 'USER/AUTHORIZED' | 'USER/UNAUTHORIZED' | 'USER/SIGNIN' | 'USER/SIGNOUT';
 
 interface UserState {
   status: Status
@@ -9,7 +11,7 @@ interface UserState {
 }
 
 interface UserAction extends Action {
-  type: Status
+  type: UserActionType
   payload: User | null
 }
 

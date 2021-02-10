@@ -1,4 +1,4 @@
-import { call, put } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { auth } from '../../shared/services/DB/DB';
 import User from '../../shared/types/User.types';
 import { setAuthorized, setUnauthorized } from './actions';
@@ -30,8 +30,10 @@ function* signOut(): Generator {
   }
 }
 
-export {
-  checkUser,
-  signIn,
-  signOut,
-};
+const watchList = [
+  takeLatest('USER/CHECK', checkUser),
+  takeLatest('USER/SIGNIN', signIn),
+  takeLatest('USER/SIGNOUT', signOut),
+]
+
+export default watchList;

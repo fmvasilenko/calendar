@@ -1,7 +1,7 @@
 import { EventAction, EventDetails } from './event.types';
 
 const getEvent = (id: string): EventAction => ({
-  type: 'EVENT/GET_EVENT',
+  type: 'EVENT/GET',
   payload: {
     status: 'GETTING_EVENT',
     id,

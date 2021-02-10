@@ -7,23 +7,23 @@ const initialState: UserState = {
 
 const userReducer = (state: UserState = initialState, action: UserAction): UserState => {
   switch (action.type) {
-    case 'CHECKING': return {
+    case 'USER/CHECK': return {
       status: 'CHECKING',
       details: null,
     };
-    case 'AUTHORIZED': return {
+    case 'USER/AUTHORIZED': return {
       status: 'AUTHORIZED',
       details: action.payload,
     }
-    case 'UNAUTHORIZED': return {
+    case 'USER/UNAUTHORIZED': return {
       status: 'UNAUTHORIZED',
       details: null,
     }
-    case 'SIGNIN': return {
+    case 'USER/SIGNIN': return {
       status: 'SIGNIN',
       details: null,
     }
-    case 'SIGNOUT': return {
+    case 'USER/SIGNOUT': return {
       status: 'SIGNOUT',
       details: null,
     }
