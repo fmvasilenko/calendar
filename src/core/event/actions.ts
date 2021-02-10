@@ -16,7 +16,15 @@ const eventReady = (details: EventDetails): EventAction => ({
   },
 });
 
+const setError = (): EventAction => ({
+  type: 'EVENT/NOTFOUND',
+  payload: {
+    status: 'NOTFOUND',
+  },
+});
+
 export {
   getEvent,
   eventReady,
+  setError,
 };

@@ -1,8 +1,8 @@
 import { Action } from 'redux';
 
-type EventStatus = 'INITIAL' | 'GETTING_EVENT' | 'READY';
+type EventStatus = 'INITIAL' | 'GETTING_EVENT' | 'READY' | 'NOTFOUND';
 
-type EventActionType = 'EVENT/GET' | 'EVENT/READY';
+type EventActionType = 'EVENT/GET' | 'EVENT/READY' | 'EVENT/NOTFOUND';
 
 interface EventDetails {
   name: string

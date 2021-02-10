@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyleProps } from './Table.types';
+import { StyleProps } from './Form.types';
 
 const Page = styled.div<StyleProps>`
   display: grid;
