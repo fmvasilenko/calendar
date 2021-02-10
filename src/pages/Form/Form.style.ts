@@ -8,7 +8,7 @@ const Page = styled.div<StyleProps>`
   grid-template-areas:
     ". header header ."
     ". description description ."
-    ". content sidebar ."
+    ". table toolsPanel ."
     ". . submitArea .";
   grid-column-gap: 50px;
   grid-row-gap: 10px;
@@ -36,30 +36,10 @@ const Text = styled.p`
   border-bottom: 1px solid #eee;
 `;
 
-const Content = styled.div`
-  grid-area: content;
-  margin-top: 20px;
-`;
-
-const TableTitle = styled.h2`
-  max-width: 300px;
-  margin-left: 122px;
-  margin-bottom: 10px;
-  color: #333;
-`;
-
-const Sidebar = styled.div`
-  grid-area: sidebar;
-  align-self: end;
-`;
-
 export {
   Page,
   Header,
   Description,
   Title,
   Text,
-  Content,
-  TableTitle,
-  Sidebar,
 }
