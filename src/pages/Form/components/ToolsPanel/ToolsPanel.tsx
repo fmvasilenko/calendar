@@ -9,12 +9,14 @@ import { Root } from './ToolsPanel.style';
 const ToolsPanel = (): JSX.Element => {
   const dispatch = useDispatch();
   const chosenTool = useSelector((store: ReduxStore) => store.tool);
+  const { days, hours } = useSelector((state: ReduxStore) => state.event);
+  const { table } = useSelector((state: ReduxStore) => state.form);
 
   const changeTool = (tool: MomentStatus) => {
     dispatch(setTool(tool));
   }
 
-  return (
+  if (days.length && hours.length && table) return (
     <Root>
       <Panel {...{
         ...vocabulary,
@@ -23,6 +25,8 @@ const ToolsPanel = (): JSX.Element => {
       }} />
     </Root>
   );
+
+  return <></>;
 };
 
 export default ToolsPanel;
