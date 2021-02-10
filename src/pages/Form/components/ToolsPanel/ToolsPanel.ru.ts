@@ -1,6 +1,6 @@
-import Config from './ToolsPanel.types';
+import { Vocabulary } from './ToolPanel.types';
 
-const config: Config = {
+const vocabulary: Vocabulary = {
   title: 'Выбранное время:',
   items: [
     {
@@ -22,4 +22,4 @@ const config: Config = {
   ]
 }
 
-export default config;
+export default vocabulary;
