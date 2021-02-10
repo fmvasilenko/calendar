@@ -1,24 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { saveForm } from '../../../../core/formStatus/actions';
+import { changeForm, saveForm } from '../../../../core/form/actions';
 import { ReduxStore } from '../../../../core/rootReducer';
-import { setTable } from '../../../../core/table/actions';
 import Button from '../../../../shared/view/components/Button/Button';
 
 import { Root, SubmitButton, Loading, Saved } from './SubmitArea.style';
 
-const tableProps = {
-  days: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница'],
-  hours: ['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00']
-}
-
 const SubmitArea = (): JSX.Element => {
-  const { days, hours } = tableProps;
   const dispatch = useDispatch();
-  const { formStatus } = useSelector((state: ReduxStore) => state);
+  const { status } = useSelector((state: ReduxStore) => state.form);
+  const { days, hours } = useSelector((state: ReduxStore) => state.event);
 
   const clearTable = () => {
-    dispatch(setTable(days.map(() => hours.map(() => 'free'))));
+    dispatch(changeForm(days.map(() => hours.map(() => 'free'))));
   }
 
   const sendForm = () => {
@@ -26,9 +20,9 @@ const SubmitArea = (): JSX.Element => {
   }
 
   const submitButton = () => {
-    switch (formStatus) {
+    switch (status) {
       case 'SAVING': return <Button view="loading" label="Сохраняем..." />;
-      case 'SAVED': return <Button view="resolve" label="Сохранено" onClick={sendForm} />;
+      case 'SYNCHRONIZED': return <Button view="resolve" label="Сохранено" onClick={sendForm} disabled={true} />;
       default: return <Button view="resolve" label="Сохранить" onClick={sendForm}/>;
     }
   }
@@ -37,8 +31,8 @@ const SubmitArea = (): JSX.Element => {
     <Root>
       <Button view="reject" label="Очистить" onClick={clearTable} />
       <SubmitButton>
-        { formStatus === 'SAVING' && <Loading /> }
-        { formStatus === 'SAVED' && <Saved /> }
+        { status === 'SAVING' && <Loading /> }
+        { status === 'SYNCHRONIZED' && <Saved /> }
         { submitButton() }
       </SubmitButton>
     </Root>

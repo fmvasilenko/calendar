@@ -7,6 +7,7 @@ const Button = (props: Props): JSX.Element => {
     label,
     view,
     type = 'button',
+    disabled = false,
     onClick = () => {},
   } = props;
 
@@ -18,6 +19,7 @@ const Button = (props: Props): JSX.Element => {
       color={color}
       border = {border}
       background = {background}
+      disabled = {disabled}
       onClick={onClick}
     >{label}</Root>
   );

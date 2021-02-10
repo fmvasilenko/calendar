@@ -17,6 +17,11 @@ const Root = styled.button<StyleProps>`
   &:hover {
     opacity: 0.5;
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
 `;
 
 export {

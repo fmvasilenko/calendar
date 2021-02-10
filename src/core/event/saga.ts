@@ -1,23 +1,25 @@
-import { call, put, select } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { storage } from '../../shared/services/DB/DB';
-import Event from '../../shared/types/Event.types';
+import { downloadForm } from '../form/actions';
 import { ReduxStore } from '../rootReducer';
 
-import { setEvent } from './actions';
+import { eventReady } from './actions';
+import { Event, EventDetails } from './event.types';
 
-function* getEvent() {
+function* getEvent(): Generator {
   try {
-    const { eventId } = (yield select((state: ReduxStore) => state)) as ReduxStore;
-    if (eventId) {
-      const event = (yield call(() => storage.getEvent(eventId))) as Event;
-      yield put(setEvent(event));
-    }
+    const { id } = (yield select((state: ReduxStore) => state.event)) as Event;
+    const eventDetails = (yield call(() => storage.getEvent(id))) as EventDetails;
+    yield put(eventReady(eventDetails));
+    yield put(downloadForm());
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
-export {
-  getEvent,
-};
+const watchList = [
+  takeLatest('EVENT/GET_EVENT', getEvent),
+]
+
+export default watchList;

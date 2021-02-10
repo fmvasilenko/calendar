@@ -2,8 +2,9 @@ import { Color } from '../../../types/Color.types';
 
 interface Props {
   label: string
-  view: StyleProps | PatternNames;
+  view: StyleProps | PatternNames
   type?: 'submit' | 'button'
+  disabled?: boolean
   onClick?: () => void
 }
 

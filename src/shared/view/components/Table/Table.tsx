@@ -1,25 +1,18 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { changeForm } from '../../../../core/form/actions';
 import { ReduxStore } from '../../../../core/rootReducer';
-import { setTable } from '../../../../core/table/actions';
-import MomentStatus from '../../../types/MomentStatus.types';
 import TableCell from '../TableCell/TableCell';
 import { Hour, Day } from './Table.style';
 import { Props } from './Table.types';
 
 const Table = (props: Props): JSX.Element => {
-  const { days, hours } = props;
   const dispatch = useDispatch();
   const tool = useSelector((store: ReduxStore) => store.tool);
-  const matrix = useSelector((store: ReduxStore) => store.table);
-
-  useEffect(() => {
-    const initialState: MomentStatus[][] = days.map(() => hours.map(() => 'free'));
-    dispatch(setTable(initialState));
-  }, [dispatch, days, hours])
+  const { days, hours } = useSelector((store: ReduxStore) => store.event);
+  const matrix = useSelector((store: ReduxStore) => store.form.table);
 
   const clickHandler = (clickedRow: number, clickedColumn: number) => {
-    dispatch(setTable(matrix.map((row, rowNumber) => {
+    dispatch(changeForm(matrix.map((row, rowNumber) => {
       return row.map((column, columnNumber) => {
         if (clickedRow === rowNumber && clickedColumn === columnNumber) return tool;
         return matrix[rowNumber][columnNumber];

@@ -1,11 +1,51 @@
 import { Action } from 'redux';
-import Event from '../../shared/types/Event.types';
 
-type ActionType = 'EVENT/SET';
+type EventStatus = 'INITIAL' | 'GETTING_EVENT' | 'READY';
 
-interface EventAction extends Action {
-  type: ActionType
-  payload: Event
+type EventActionType = 'EVENT/GET_EVENT' | 'EVENT/READY';
+
+interface EventDetails {
+  name: string
+  description: string
+  days: string[]
+  hours: string[]
 }
 
-export default EventAction;
+interface EventPayload {
+  status: EventStatus
+  id?: string
+  name?: string
+  description?: string
+  days?: string[]
+  hours?: string[]
+}
+
+interface Event {
+  status: EventStatus
+  id: string
+  name: string
+  description: string
+  days: string[]
+  hours: string[]
+}
+
+interface EventAction extends Action {
+  type: EventActionType
+  payload: EventPayload
+}
+
+export type {
+  EventDetails,
+  Event,
+  EventAction
+}
+
+/*
+event: {
+    id: 'eventId',
+    name: 'someEvent',
+    description: 'description',
+    days: string[],
+    hours: string[],
+  },
+*/
