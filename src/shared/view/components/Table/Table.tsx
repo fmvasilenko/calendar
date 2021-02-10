@@ -1,24 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { changeForm } from '../../../../core/form/actions';
-import { ReduxStore } from '../../../../core/rootReducer';
 import TableCell from '../TableCell/TableCell';
 import { Hour, Day } from './Table.style';
 import { Props } from './Table.types';
 
 const Table = (props: Props): JSX.Element => {
-  const dispatch = useDispatch();
-  const tool = useSelector((store: ReduxStore) => store.tool);
-  const { days, hours } = useSelector((store: ReduxStore) => store.event);
-  const matrix = useSelector((store: ReduxStore) => store.form.table);
-
-  const clickHandler = (clickedRow: number, clickedColumn: number) => {
-    dispatch(changeForm(matrix.map((row, rowNumber) => {
-      return row.map((column, columnNumber) => {
-        if (clickedRow === rowNumber && clickedColumn === columnNumber) return tool;
-        return matrix[rowNumber][columnNumber];
-      });
-    })));
-  }
+  const { days, hours, matrix, callBack } = props;
 
   return (
     <table>
@@ -38,7 +23,7 @@ const Table = (props: Props): JSX.Element => {
                   status={ matrix[rowNumber][columnNumber] }
                   row={ rowNumber }
                   column={ columnNumber }
-                  callBack={ clickHandler } 
+                  callBack={ callBack } 
                 />) }
             </tr>
           )) 

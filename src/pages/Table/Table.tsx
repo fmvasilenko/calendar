@@ -10,18 +10,29 @@ import PageHeader from '../../shared/view/components/Header/Header';
 
 import { Page, Header, Description, Title, Content, TableTitle, Sidebar, Text } from './Table.style';
 import SubmitArea from './components/SubmitArea/SubmitArea';
+import { changeForm } from '../../core/form/actions';
 
 const Table = (): JSX.Element => {
+  const dispatch = useDispatch();
   const { name, days, hours } = useSelector((state: ReduxStore) => state.event);
+  const { table } = useSelector((state: ReduxStore) => state.form);
+  const tool = useSelector((state: ReduxStore) => state.tool);
 
   const tableSize = hours.length * 50 + hours.length - 1 + 121;
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const { eventId } = queryString.parse(window.location.search);
     dispatch(getEvent(eventId as string));
   }, [dispatch])
+
+  const clickHandler = (clickedRow: number, clickedColumn: number) => {
+    dispatch(changeForm(table.map((row, rowNumber) => {
+      return row.map((column, columnNumber) => {
+        if (clickedRow === rowNumber && clickedColumn === columnNumber) return tool;
+        return table[rowNumber][columnNumber];
+      });
+    })));
+  }
 
   return (
     <Page tableWidth={tableSize}>
@@ -29,14 +40,14 @@ const Table = (): JSX.Element => {
         <PageHeader />
       </Header>
       <Description>
-        <Title>{ name || 'Очень важное мероприятие!<br/>Все обязательно приходите!' }</Title>
+        <Title>{ name }</Title>
         <Text>
           Но новая модель организационной деятельности требует определения и уточнения кластеризации усилий! Лишь стремящиеся вытеснить традиционное производство, нанотехнологии в равной степени предоставлены сами себе. Безусловно, убеждённость некоторых оппонентов позволяет выполнить важные задания по разработке вывода текущих активов.
         </Text>
       </Description>
       <Content>
         <TableTitle>Выберите время, когда вам удобно встретиться:</TableTitle>
-        <CalendarTable days={days} hours={hours}/>
+        <CalendarTable days={days} hours={hours} matrix={table} callBack={clickHandler} />
       </Content>
       <Sidebar>
         <ToolsPanel />
