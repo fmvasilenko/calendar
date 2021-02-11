@@ -14,7 +14,14 @@ function* downloadForm(): Generator {
     yield put(changeForm(form));
     yield put(formSynchronized());
   } catch (error) {
-    console.log(error);
+    switch (error.name) {
+      case 'Unauthorized': {
+        const { days, hours } = (yield select((state: ReduxStore) => state.event)) as Event;
+        yield put(changeForm(days.map(() => hours.map(() => 'free'))));
+        break;
+      }
+      default: console.log(error);
+    }
   }
 }
 

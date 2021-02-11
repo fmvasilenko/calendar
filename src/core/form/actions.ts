@@ -20,7 +20,7 @@ const changeForm = (table: MomentStatus[][]): FormAction => ({
   payload: {
     status: 'CHANGED',
     table,
-  }
+  },
 });
 
 const saveForm = (): FormAction => ({

@@ -20,7 +20,7 @@ const Form = (): JSX.Element => {
   let tableSize = hours.length * 50 + hours.length - 1 + 121;
   if (tableSize < 375) tableSize = 375;
 
-  // if (status === 'NOTFOUND') history.push('/');
+  if (status === 'NOTFOUND') history.push('/');
 
   useEffect(() => {
     dispatch(getEvent(eventId as string));

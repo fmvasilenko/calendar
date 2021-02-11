@@ -8,7 +8,8 @@ import { Root, SubmitButton, Loading, Saved } from './SubmitArea.style';
 
 const SubmitArea = (): JSX.Element => {
   const dispatch = useDispatch();
-  const { status } = useSelector((state: ReduxStore) => state.form);
+  const { status: formStatus } = useSelector((state: ReduxStore) => state.form);
+  const { status: userStatus } = useSelector((state: ReduxStore) => state.user);
   const { days, hours } = useSelector((state: ReduxStore) => state.event);
 
   const clearTable = () => {
@@ -20,10 +21,13 @@ const SubmitArea = (): JSX.Element => {
   }
 
   const submitButton = () => {
-    switch (status) {
+    switch (formStatus) {
       case 'SAVING': return <Button view="loading" label="Сохраняем..." />;
-      case 'SYNCHRONIZED': return <Button view="resolve" label="Сохранено" onClick={sendForm} disabled={true} />;
-      default: return <Button view="resolve" label="Сохранить" onClick={sendForm}/>;
+      case 'SYNCHRONIZED': return <Button view="resolve" label="Сохранено" disabled={true} />;
+      default: {
+        if (userStatus === 'AUTHORIZED') return <Button view="resolve" label="Сохранить" onClick={sendForm}/>;
+        return <Button view="resolve" label="Сохранить" disabled={true} />;
+      }
     }
   }
 
@@ -31,8 +35,8 @@ const SubmitArea = (): JSX.Element => {
     <Root>
       <Button view="reject" label="Очистить" onClick={clearTable} />
       <SubmitButton>
-        { status === 'SAVING' && <Loading /> }
-        { status === 'SYNCHRONIZED' && <Saved /> }
+        { formStatus === 'SAVING' && <Loading /> }
+        { formStatus === 'SYNCHRONIZED' && <Saved /> }
         { submitButton() }
       </SubmitButton>
     </Root>
