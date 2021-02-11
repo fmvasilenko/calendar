@@ -19,6 +19,7 @@ const changeForm = (table: MomentStatus[][]): FormAction => ({
   type: 'FORM/CHANGED',
   payload: {
     status: 'CHANGED',
+    initialized: true,
     table,
   },
 });

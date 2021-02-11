@@ -10,13 +10,12 @@ const ToolsPanel = (): JSX.Element => {
   const dispatch = useDispatch();
   const chosenTool = useSelector((store: ReduxStore) => store.tool);
   const { days, hours } = useSelector((state: ReduxStore) => state.event);
-  const { table } = useSelector((state: ReduxStore) => state.form);
 
   const changeTool = (tool: MomentStatus) => {
     dispatch(setTool(tool));
   }
 
-  if (days.length && hours.length && table) return (
+  if (days.length && hours.length) return (
     <Root>
       <Panel {...{
         ...vocabulary,

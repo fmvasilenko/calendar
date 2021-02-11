@@ -19,7 +19,7 @@ const Table = (): JSX.Element => {
     })));
   }
 
-  if (days.length && hours.length && table) return (
+  if (days.length && hours.length) return (
     <Root>
       <TableTitle>Выберите время, когда вам удобно встретиться:</TableTitle>
       <CalendarTable days={days} hours={hours} matrix={table} callBack={clickHandler} />

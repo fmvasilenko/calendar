@@ -2,6 +2,7 @@ import { Form, FormAction } from './form.types';
 
 const initialState: Form = {
   status: 'INITIAL',
+  initialized: false,
   table: [[]]
 }
 

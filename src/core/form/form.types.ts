@@ -7,11 +7,13 @@ type FormActionType = 'FORM/DOWNLOAD' | 'FORM/SYNCHRONIZED' | 'FORM/SAVE' | 'FOR
 
 interface FormPayload {
   status: FormStatus
+  initialized?: boolean
   table?: MomentStatus[][]
 }
 
 interface Form {
   status: FormStatus
+  initialized: boolean
   table: MomentStatus[][]
 }
 
