@@ -7,7 +7,7 @@ const Page = styled.div<StyleProps>`
   grid-template-rows: max-content max-content max-content;
   grid-template-areas:
     ". header header ."
-    ". description description ."
+    ". event event ."
     ". table toolsPanel ."
     ". . submitArea .";
   grid-column-gap: 50px;
@@ -15,31 +15,6 @@ const Page = styled.div<StyleProps>`
   padding-bottom: 50px;
 `;
 
-const Header = styled.div`
-  grid-area: header;
-  width: 100%;
-`;
-
-const Description = styled.div`
-  grid-area: description;
-  padding-left: 121px;
-`;
-
-const Title = styled.h1`
-  color: #333;
-`;
-
-const Text = styled.p`
-  margin-top: 10px;
-  color: #333;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #eee;
-`;
-
 export {
   Page,
-  Header,
-  Description,
-  Title,
-  Text,
 }
