@@ -22,7 +22,7 @@ const SubmitArea = (): JSX.Element => {
 
   const submitButton = () => {
     switch (formStatus) {
-      case 'SAVING': return <Button view="loading" label="Сохраняем..." />;
+      case 'SAVING': return <Button view="loading" label="Сохраняем..." disabled={true} />;
       case 'SYNCHRONIZED': return <Button view="resolve" label="Сохранено" disabled={true} />;
       default: {
         if (userStatus === 'AUTHORIZED') return <Button view="resolve" label="Сохранить" onClick={sendForm}/>;
