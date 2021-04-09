@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const Root = styled.header`
   grid-area: header;
   width: 100%;
-  padding-left: 121px;
 `;
 
 const Content = styled.div`

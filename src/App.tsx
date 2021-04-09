@@ -9,6 +9,7 @@ import { checkUser } from './core/user/actions';
 import Main from './pages/Main';
 import Form from './pages/Form/Form';
 import NotFound from './pages/NotFound/NotFound';
+import Edit from './pages/Edit/Edit';
 
 const App = (): JSX.Element => {
   const user = useSelector((store: ReduxStore) => store.user);
@@ -21,6 +22,7 @@ const App = (): JSX.Element => {
       <Switch>
         <Route exact path="/" component={Main} />
         <Route exact path="/form/:eventId" component={Form} />
+        <Route exact path="/edit/:eventId" component={Edit} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>

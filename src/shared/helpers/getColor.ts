@@ -8,6 +8,7 @@ const getColor = (color: Color) => {
     'pink': '#ffb4b4',
     'green': '#75cfb8',
     'grey': '#eee',
+    'middleGrey': '#ccc',
     'white': 'white',
   }[color];
 };
